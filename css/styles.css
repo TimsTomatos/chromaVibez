@@ -1,0 +1,118 @@
+html, body {
+	font-family: 'Raleway', sans-serif;
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+/* #topBar {
+	font-family: 'Raleway', sans-serif;
+	font-size: 30px;
+	height: 80px;
+	width: 100%;
+	position: absolute;
+	background-color: white;
+	text-align: center;
+	line-height: 75px;
+	background: -webkit-linear-gradient(lightgray, #52b7bd);
+	color: white;
+} */
+
+#nav {
+	width: 100%;
+	position: fixed;
+	top: 0;
+	height: 75px;
+	background-color: #84C7CA;
+	z-index: 1;
+	font-size: 20px;
+}
+
+#navTxt {
+	position: relative;
+	top: 25px;
+	left: 30px;
+	color: black;
+	letter-spacing: 5px;
+}
+
+#title {
+	padding-top: 75px;
+	background: linear-gradient(180deg, #78C5C9, lightgray);
+	min-height: 95vh;
+	position: relative;
+	transform: translateZ(100px);
+	background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+	transform-style: preserve-3d;
+}
+
+#titleWrap {
+	font-size: 8vh;
+	width: 100%;
+	color: white;
+	letter-spacing: 12px;
+	text-align: center;
+	position: absolute;
+	top: 42%;
+
+}
+
+#container {
+	height: 100%;
+	background-color: white;
+}
+
+#uploadBtn {
+	font-size: 30px;
+	height: 50px;
+	width: 300px;
+	background-color: gray;
+	outline: none;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+	top: 20%;
+}
+
+#uploadInp {
+	height: 100px;
+	width: 200px;
+	display: block;
+	background-color: lightgray;
+	border-radius: 20px;
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+	top: 10%;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+#uploadTtl {
+	width: 100%;
+	text-align: center;
+	position: relative;
+	top: 20px;
+}
+
+#displayImg {
+	width: 175px;
+	display: block;
+	margin-right: auto;
+	margin-left: auto;
+	position: relative;
+	top: 20%;
+}
+
+.color {
+	height: 100%;
+	width: 20%;
+	display: inline-block;
+}
