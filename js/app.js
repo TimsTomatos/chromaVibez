@@ -84,3 +84,23 @@ $('#uploadInp').on('click', function(){
 	$('#uploadInp')[0].style.height = "200px";
 })
 
+// https://yev2rkvulj.execute-api.us-west-2.amazonaws.com/dev/get
+$.ajax({
+  url: "https://yev2rkvulj.execute-api.us-west-2.amazonaws.com/dev/get",
+  method: 'GET',
+  "Content-Type": "application/json",
+})
+.done((response) => {
+	console.log(response)
+})
+.fail((err) => {
+  console.log('error', err);
+})
+
+
+
+
+
+function addEmbed(link) {
+	console.log(link)
+}
