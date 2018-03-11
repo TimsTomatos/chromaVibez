@@ -36,7 +36,6 @@ var list = [
 ["white","Upliftng",[255,255,255,1]]];
 
 function newRound (data){
-	console.log(data)
   var avg =[];
   var red=0;
   var green=0;
@@ -63,15 +62,50 @@ function newRound (data){
 
 var rgbValues = [];
 function grabCol(colors) {
+  rgbValues=[];
 	colors.map(currVal => {
 		var singleRGB = [];
-		singleRGB.push(currVal[0], currVal[1], currVal[2]);
-		rgbValues.push(singleRGB);
-		$('#container').append(`<div class="color" style="background-color:rgb(${currVal[0]}, ${currVal[1]}, ${currVal[2]})"></div>`);
+		rgbValues.push([currVal[0], currVal[1], currVal[2]]);
+    $('#container').append(`<div class="color" style="background: linear-gradient(to bottom, rgb(255,255,255) 0%, rgb(${currVal[0]}, ${currVal[1]}, ${currVal[2]}) 70%)"></div>`);
 		console.log(singleRGB)
-		console.log(rgbValues)
 	})
-	console.log(list[newRound(rgbValues)]);
+	console.log(list[newRound(rgbValues)][1]);
+
+  $.ajax({
+    url: "https://dwcvlik50c.execute-api.us-west-2.amazonaws.com/dev/post",
+    method: 'POST',
+    contentType: "application/json; charset=utf-8",
+    dataType: 'JSON',
+    data: JSON.stringify(list[newRound(rgbValues)][1])
+  })
+  .done((response) => {
+    console.log(response)
+  })
+  .fail((err) => {
+    //console.log($('#playImg')[0].src)
+    console.log(err.responseText);
+    //$('#playImg')[0].src = err.responseText;
+
+    $('#container').append(`
+      <div id="playImgWrap">
+        <iframe id="playImg" src="${err.responseText}" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+      </div>
+    `)
+  })
+}
+
+//makes dynamic element the same height and width
+
+let $img = $('#playImg');
+$(window).resize(function () {
+	$img.height($img.width());
+}).resize();
+
+
+//converts img
+
+function convertor() {
+	console.log($('#displayImg').attr('src'))
 }
 
 var loadFile = function(event) {
@@ -83,4 +117,3 @@ $('#uploadInp').on('click', function(){
 	$('#uploadInp')[0].style.width = "300px";
 	$('#uploadInp')[0].style.height = "200px";
 })
-

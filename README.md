@@ -1,2 +1,2 @@
-# ATT-Hack2.0
-Fixed Version of Repo
+# AT-T-Hack
+AT&amp;T Hack Competition Application
