@@ -9,7 +9,7 @@
 <body>
 	
 	<div id="nav">
-		<span id="navTxt">DEVELOPERS</span>
+		<a href="./html/about.html" id="daizzy"><span id="navTxt">DEVELOPERS</span></a>
 	</div>
 
 	<div id="title">
@@ -19,6 +19,10 @@
 	</div>
 
 	<div id="container">
+		<div id="sketchJS">
+			
+		</div>
+
 		<label id="uploadInp">
 			<input type="file" accept="image/*" onchange="loadFile(event)">
 			<div id="uploadTtl">Upload File</div>
@@ -34,7 +38,9 @@
 		</div>
 	</div>
 
+
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="./js/sketch.js"></script>
 	<script src="./js/browserified.js"></script>
 	<script src="./js/app.js"></script>
 </body>

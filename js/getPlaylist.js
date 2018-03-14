@@ -1,3 +1,4 @@
+//converted to lambda on AWS
 var Spotify = require('node-spotify-api');
 
 module.exports.getPlaylist = (event, context, callback) => {
