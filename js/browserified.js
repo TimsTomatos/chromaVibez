@@ -2,8 +2,8 @@
 const path = require('path');
 const getColors = require('get-image-colors');
 
-var colorCodes = [];
 $('#uploadBtn').on('click', function(){
+	var colorCodes = [];
 	console.log($('#displayImg').attr('src'));
 	let link = $('#displayImg').attr('src');
 

@@ -1,6 +1,5 @@
 
-//grabs colors from image conversion
-$(window).scroll(() => {
+$(window).scroll(() => { //fades title on scroll
 	$('#titleWrap').css('opacity', Math.max(1 - $(window).scrollTop() / 275, 0));
 });
 
@@ -20,20 +19,23 @@ function rgbToHsl(r, g, b) {
     }
     h /= 6;
   }
+
   return [ h, s, l ];
 }
 
 var list = [
-["red","Romance",[255,0,0,1]],
-["pink","Love",[255,105,180,1]],
-["orange","Energetic",[255,165,0,1]],
-["yellow","Creativity",[255,255,0,1]],
-["blue","Relax",[0,0,225,1]],
-["green","Calm",[0,128,0,1]],
-["purple","Royal",[128,0,128,1]],
-["brown","Bold",[153,76,0,1]],
-["black","Alternative",[0,0,0,1]],
-["white","Upliftng",[255,255,255,1]]];
+  ["red","Romance",[255,0,0,1]],
+  //["hayashi", "Metallica", [132, 108, 108]],
+  ["pink","Love",[255,105,180,1]],
+  ["orange","Energetic",[255,165,0,1]],
+  ["yellow","Creativity",[255,255,0,1]],
+  ["blue","Relax",[0,0,225,1]],
+  ["green","Calm",[0,128,0,1]],
+  ["purple","Royal",[128,0,128,1]],
+  ["brown","Bold",[153,76,0,1]],
+  ["black","Alternative",[0,0,0,1]],
+  ["white","Upliftng",[255,255,255,1]],
+];
 
 function newRound (data){
   var avg =[];
@@ -52,25 +54,31 @@ function newRound (data){
   avg.push(red/5);
   avg.push(green/5);
   avg.push(blue/5);
+  //console.log(avg)
   /////
   var range =[];
   list.map(rgb => {
     range.push(Math.abs(rgbToHsl(...rgb[2])[0]-rgbToHsl(...avg)[0]));
   });
+
   return (range.indexOf(Math.min(...range)));
 }
 
-var rgbValues = [];
-function grabCol(colors) {
-  rgbValues=[];
-	colors.map(currVal => {
-		var singleRGB = [];
-		rgbValues.push([currVal[0], currVal[1], currVal[2]]);
-    $('#container').append(`<div class="color" style="background: linear-gradient(to bottom, rgb(255,255,255) 0%, rgb(${currVal[0]}, ${currVal[1]}, ${currVal[2]}) 70%)"></div>`);
-		console.log(singleRGB)
-	})
-	console.log(list[newRound(rgbValues)][1]);
+function grabCol(colors) { //grabs colors from image conversion
+  var rgbValues = [];
+  $('#generatedCont').empty();
 
+  var delayIncrement = 0
+  colors.map(currVal => {
+    delayIncrement += 250;
+    var singleRGB = [];
+    rgbValues.push([currVal[0], currVal[1], currVal[2]]);
+    $(`<div class="color" style="background: linear-gradient(to bottom, rgb(255,255,255) 0%, rgb(${currVal[0]}, ${currVal[1]}, ${currVal[2]}) 70%)"></div>`).hide().appendTo('#generatedCont').delay(delayIncrement).slideDown(350);
+    //$('#container').append(`<div class="color" style="background: linear-gradient(to bottom, rgb(255,255,255) 0%, rgb(${currVal[0]}, ${currVal[1]}, ${currVal[2]}) 70%)"></div>`);
+  })
+
+  //console.log(list[newRound(rgbValues)])
+  //console.log(list[newRound(rgbValues)][1]);
   $.ajax({
     url: "https://dwcvlik50c.execute-api.us-west-2.amazonaws.com/dev/post",
     method: 'POST',
@@ -82,11 +90,9 @@ function grabCol(colors) {
     console.log(response)
   })
   .fail((err) => {
-    //console.log($('#playImg')[0].src)
-    console.log(err.responseText);
-    //$('#playImg')[0].src = err.responseText;
+    //console.log(err.responseText);
 
-    $('#container').append(`
+    $('#generatedCont').append(`
       <div id="playImgWrap">
         <iframe id="playImg" src="${err.responseText}" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
       </div>
@@ -114,6 +120,5 @@ var loadFile = function(event) {
 };
 
 $('#uploadInp').on('click', function(){
-	$('#uploadInp')[0].style.width = "300px";
-	$('#uploadInp')[0].style.height = "200px";
+	
 })
