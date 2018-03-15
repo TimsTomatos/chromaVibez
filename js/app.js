@@ -25,7 +25,7 @@ function rgbToHsl(r, g, b) {
 
 var list = [
   ["red","Romance",[255,0,0,1]],
-  //["hayashi", "Metallica", [132, 108, 108]],
+  ["hayashi", "Metallica", [133.4, 108.6, 108.2,1]],
   ["pink","Love",[255,105,180,1]],
   ["orange","Energetic",[255,165,0,1]],
   ["yellow","Creativity",[255,255,0,1]],
